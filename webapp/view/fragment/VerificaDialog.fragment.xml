@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout">
+	<Dialog title="Item Faltante">
+		<Table items="{/VerificaSet}">
+			<columns>
+				<Column minScreenWidth="Tablet" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" >
+					<Text text="Componente"/>
+				</Column>
+				<Column minScreenWidth="Tablet" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true">
+					<Text text="Lote"/>
+				</Column>
+				<Column minScreenWidth="Tablet" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true">
+					<Text text="Quantidade"/>
+				</Column>
+				<!--<Column mergeDuplicates="false" demandPopin="true" hAlign="Center">-->
+				<!--	<Text text="UD"/>-->
+				<!--</Column>-->
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{Matnr}"/>
+						<Text text="{Charg}"/>
+						<Text text="{Qtd}"/>
+						<!--<ObjectNumber number="{= ${Meins} === 'M2' ? ${path: 'Verme', formatter: '.formatter.numberqtdToLocale' } : ${Meins} === 'CG' ? ${path: 'Verme', formatter: '.formatter.numberqtdToLocale' } : ${path: 'Verme', formatter: '.formatter.numberToLocale' } }" -->
+						<!--	unit="{Meins}"/>-->
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<beginButton>
+			<Button type="Transparent" text="Cancelar" press="onCloseDialog"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -18,6 +18,9 @@ sap.ui.define([
 				ValidaSet: [],
 				Id_carrinho: ""
 			}), "viewModel");
+			this.setModel(new JSONModel({
+				VerificaSet: []
+			}), "verifica");			
 			var that = this;
 			// this._currentContext = this.getSource().getBindingContext();
 			this.oDialog = new sap.ui.xmlfragment("validar.carrinhoZPP_VALIDAR.view.fragment.CarrinhoDialog", this);
@@ -47,13 +50,13 @@ sap.ui.define([
 
 			
 			that.getModel("viewModel").setProperty("/Id_carrinho", oDialogData.Id_carrinho);
-			
+			that.getModel("viewModel").setProperty("/busy", true);
 			oModel.invalidate();	
 			oModel.callFunction("/LerBarcode", {
 				method: "GET",
 				urlParameters: {
 					Barcode: '0',
-					Carrinho: '0'
+					Id_carrinho: oDialogData.Id_carrinho
 				},
 				success: function(oData) {	
 					that.getModel("viewModel").setProperty("/busy", false);
@@ -105,17 +108,12 @@ sap.ui.define([
 					method: "GET",
 					urlParameters: {
 						Barcode: barcode,
-						Carrinho: that.getModel("viewModel").getProperty("/Id_carrinho")
+						Id_carrinho: that.getModel("viewModel").getProperty("/Id_carrinho")
 					},
 					success: function(oData) {	
-						// if	(oData.results.length === that.getView().byId("tbValida").getBinding("items").iLength) {
-						// 	MessageBox.information("Não foi possível localizar a etiqueta");
-						// } else {						
-							that.getModel("viewModel").setProperty("/ValidaSet", oData.results);
-							that.getModel("viewModel").setProperty("/busy", false);
-							that.getView().byId("tbValida").getBinding("items").refresh();
-							that.lerCod();
-						// }
+						that.getModel("viewModel").setProperty("/ValidaSet", oData.results);
+						that.getModel("viewModel").setProperty("/busy", false);
+						that.getView().byId("tbValida").getBinding("items").refresh();
 					},
 					error: function(error) {
 						that.getModel("viewModel").setProperty("/busy", false);
@@ -124,6 +122,40 @@ sap.ui.define([
 				});	
 			});					
 		},
+		verifica: function() {
+			var that = this;
+			that.getModel("viewModel").setProperty("/busy", true);
+			var oModel = that.getModel();
+			oModel.invalidate();
+			oModel.callFunction("/Verifica", {
+				method: "GET",
+				urlParameters: {
+					Id_carrinho: that.getModel("viewModel").getProperty("/Id_carrinho")
+				},
+				success: function(oData) {	
+					that.getModel("viewModel").setProperty("/VerificaSet", oData.results);
+					that.getModel("viewModel").setProperty("/busy", false);
+					that.oDialog = new sap.ui.xmlfragment("validar.carrinhoZPP_VALIDAR.view.fragment.VerificaDialog", that);
+					if (that.oDialog) {
+						that.getView().addDependent(that.oDialog);
+		
+						that.oDialog.setModel(that.getModel());
+						that.oDialog.setModel(new JSONModel({
+							VerificaSet: oData.results
+						}, "verifica"));
+						that.getModel("verifica").setProperty("/VerificaSet", oData.results);
+						that.oDialog.setBindingContext(that._currentContext);
+						// this.oDialog.setBindingContext(that);
+						that.oDialog.open();
+					}					
+				},
+				error: function(error) {
+					that.getModel("viewModel").setProperty("/busy", false);
+					MessageBox.information("Erro");
+				}
+			});	
+					
+		},		
 		onCloseDialog: function() {
 			this.oDialog.close();
 			this.oDialog.destroy(true);

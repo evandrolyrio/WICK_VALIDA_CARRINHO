@@ -1,0 +1,35 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="Z_VALIDA_SRV" xml:lang="pt" sap:schema-version="1">
+			<EntityType Name="Valida" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="User"/>
+					<PropertyRef Name="Id_carrinho"/>
+					<PropertyRef Name="Barcode"/>
+				</Key>
+				<Property Name="User" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Id_carrinho" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Barcode" Type="Edm.String" Nullable="false" MaxLength="36" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+			</EntityType>
+			<EntityContainer Name="Z_VALIDA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+				<EntitySet Name="ValidaSet" EntityType="Z_VALIDA_SRV.Valida" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+					sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<FunctionImport Name="LerBarcode" ReturnType="Collection(Z_VALIDA_SRV.Valida)" EntitySet="ValidaSet" m:HttpMethod="GET"
+					sap:action-for="Z_VALIDA_SRV.Valida">
+					<Parameter Name="Id_carrinho" Type="Edm.String" Mode="In"/>
+					<Parameter Name="Barcode" Type="Edm.String" Mode="In"/>
+				</FunctionImport>
+			</EntityContainer>
+			<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self"
+				href="http://dc-vm-fio-dq1.wickbold.local:8000/sap/opu/odata/sap/z_valida_srv/$metadata"/>
+			<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version"
+				href="http://dc-vm-fio-dq1.wickbold.local:8000/sap/opu/odata/sap/z_valida_srv/$metadata"/>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

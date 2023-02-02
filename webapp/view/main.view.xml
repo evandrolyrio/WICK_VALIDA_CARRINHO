@@ -8,7 +8,8 @@
 				<ObjectAttribute title="Id do Carrinho" text="{viewModel>/Id_carrinho}"/>
 				<Toolbar>
 					<ToolbarSpacer/>
-					<Button text="Ler" icon="sap-icon://print" press="Ler"/>
+					<Button text="Verificar" icon="sap-icon://bar-code" press="verifica"/>
+					<Button text="Ler" icon="sap-icon://bar-code" press="lerCod"/>
 					
 				</Toolbar>
 			</form:SimpleForm>
@@ -33,9 +34,9 @@
 									<ObjectIdentifier title="{viewModel>Barcode}"/>
 								</cells>
 								<cells>
-									<ObjectIdentifier title="{viewModel>Barcode}"  />
+									<!--<ObjectIdentifier title="{viewModel>Barcode}"  />-->
 									<ObjectStatus icon="{= ${viewModel>Status} === true ? 'sap-icon://ok' : 'sap-icon://cancel' }" iconDensityAware="true"
-											state="{= ${viewModel>Status} === true ? 'Success' : 'Warning'}" text="{= ${viewModel>Status} === true ? 'Ok' : 'Erro' }"/>
+											state="{= ${viewModel>Status} === true ? 'Success' : 'Error'}" text="{= ${viewModel>Status} === true ? 'Ok' : 'Erro' }"/>
 								</cells>								
 							</ColumnListItem>
 						</items>
