@@ -35,8 +35,8 @@
 								</cells>
 								<cells>
 									<!--<ObjectIdentifier title="{viewModel>Barcode}"  />-->
-									<ObjectStatus icon="{= ${viewModel>Status} === true ? 'sap-icon://ok' : 'sap-icon://cancel' }" iconDensityAware="true"
-											state="{= ${viewModel>Status} === true ? 'Success' : 'Error'}" text="{= ${viewModel>Status} === true ? 'Ok' : 'Erro' }"/>
+									<ObjectStatus icon="{= ${viewModel>Status} === 'X' ? 'sap-icon://ok' : 'sap-icon://cancel' }" iconDensityAware="true"
+											state="{= ${viewModel>Status} === 'X' ? 'Success' : 'Error'}" text="{= ${viewModel>Status} === 'X' ? 'Ok' : 'Erro' }"/>
 								</cells>								
 							</ColumnListItem>
 						</items>

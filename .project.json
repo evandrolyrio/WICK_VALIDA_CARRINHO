@@ -27,7 +27,8 @@
     "sourceFolder": "webapp",
     "targetFolder": "dist",
     "excludedFolders": [],
-    "excludedFiles": []
+    "excludedFiles": [],
+    "lastBuildDateTime": "Thu, 02 Feb 2023 20:24:45 GMT"
   },
   "basevalidator": {
     "services": {
@@ -40,5 +41,9 @@
     "notifyBeforePushLevel": "Error",
     "blockPush": false,
     "blockPushLevel": "Error"
+  },
+  "deploy": {
+    "destination": "SFD",
+    "name": "Z_VALIDAR"
   }
 }

@@ -7,7 +7,7 @@
 		"applicationVersion": {
 			"version": "1.0.0"
 		},
-		"title": "{{appTitle}}",
+		"title": "{{Validar Carrinho}}",
 		"description": "{{appDescription}}",
 		"dataSources": {
 			"Z_VALIDA_SRV": {
@@ -18,13 +18,12 @@
 					"localUri": "localService/metadata.xml"
 				}
 			}
-		},		
+		},
 		"sourceTemplate": {
 			"id": "ui5template.basicSAPUI5ApplicationProject",
 			"version": "1.40.12"
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -43,10 +42,8 @@
 		"supportedThemes": [
 			"sap_hcb",
 			"sap_belize"
-
 		]
 	},
-
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "validar.carrinhoZPP_VALIDAR.view.main",
@@ -84,12 +81,18 @@
 				},
 				"dataSource": "Z_VALIDA_SRV",
 				"preload": true
-			}			
+			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/z_validar/webapp",
+		"_version": "1.1.0"
 	}
 }
