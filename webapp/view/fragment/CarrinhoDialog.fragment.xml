@@ -6,10 +6,13 @@
 				<Label text="Id do Carrinho"/>
 				<Input value="{/Id_carrinho}" showSuggestion="true" showTableSuggestionValueHelp="false"
 					suggestionItemSelected="suggestionItemSelected"></Input>
+				<Label text="Ordem"/>
+				<Input value="{/Aufnr}" showSuggestion="true" showTableSuggestionValueHelp="false"
+					suggestionItemSelected="suggestionItemSelected"></Input>					
 			</l:VerticalLayout>
 		</f:SimpleForm>
 		<beginButton>
-			<Button type="Accept" text="Ok" press="goToValida" enabled="{= ${/Id_carrinho} ? true : false }"/>
+			<Button type="Accept" text="Ok" press="goToValida" enabled="{= ${/Id_carrinho} ? ${/Aufnr} ? true : false : false }"/>
 		</beginButton>
 		<endButton>
 			<Button type="Transparent" text="Cancelar" press="onCloseDialog"/>

@@ -16,7 +16,8 @@ sap.ui.define([
 				busy: false,
 				//FilterData
 				ValidaSet: [],
-				Id_carrinho: ""
+				Id_carrinho: "",
+				Aufnr: ""
 			}), "viewModel");
 			this.setModel(new JSONModel({
 				VerificaSet: []
@@ -29,7 +30,8 @@ sap.ui.define([
 
 				this.oDialog.setModel(this.getModel());
 				this.oDialog.setModel(new JSONModel({
-					Id_carrinho: ""
+					Id_carrinho: "",
+					Aufnr: ""
 				}, "dialog"));
 
 				this.oDialog.setBindingContext(this._currentContext);
@@ -50,6 +52,7 @@ sap.ui.define([
 
 			
 			that.getModel("viewModel").setProperty("/Id_carrinho", oDialogData.Id_carrinho);
+			that.getModel("viewModel").setProperty("/Aufnr", oDialogData.Aufnr);
 			that.getModel("viewModel").setProperty("/busy", true);
 			oModel.invalidate();	
 			oModel.callFunction("/LerBarcode", {
@@ -130,7 +133,8 @@ sap.ui.define([
 			oModel.callFunction("/Verifica", {
 				method: "GET",
 				urlParameters: {
-					Id_carrinho: that.getModel("viewModel").getProperty("/Id_carrinho")
+					Id_carrinho: that.getModel("viewModel").getProperty("/Id_carrinho"),
+					Aufnr: that.getModel("viewModel").getProperty("/Aufnr")
 				},
 				success: function(oData) {	
 					that.getModel("viewModel").setProperty("/VerificaSet", oData.results);

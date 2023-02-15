@@ -7,7 +7,7 @@
 		"applicationVersion": {
 			"version": "1.0.0"
 		},
-		"title": "{{Validar Carrinho}}",
+		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"dataSources": {
 			"Z_VALIDA_SRV": {
