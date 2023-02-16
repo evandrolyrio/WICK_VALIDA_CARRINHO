@@ -19,7 +19,8 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text text="{Matnr}"/>
+						<!--<Text text="{Matnr}"/>-->
+						<ObjectIdentifier title="{Matnr}" text="{Maktx}"/>
 						<Text text="{Charg}"/>
 						<Text text="{Qtd}"/>
 						<!--<ObjectNumber number="{= ${Meins} === 'M2' ? ${path: 'Verme', formatter: '.formatter.numberqtdToLocale' } : ${Meins} === 'CG' ? ${path: 'Verme', formatter: '.formatter.numberqtdToLocale' } : ${path: 'Verme', formatter: '.formatter.numberToLocale' } }" -->

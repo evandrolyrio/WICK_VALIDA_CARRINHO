@@ -27,6 +27,9 @@
 							</Column>
 							<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
 								<Text text="Status" wrapping="false"/>
+							</Column>
+							<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+								<Text text="Componente" wrapping="false"/>
 							</Column>							
 						</columns>
 						<items>
@@ -38,6 +41,9 @@
 									<!--<ObjectIdentifier title="{viewModel>Barcode}"  />-->
 									<ObjectStatus icon="{= ${viewModel>Status} === 'X' ? 'sap-icon://ok' : 'sap-icon://cancel' }" iconDensityAware="true"
 											state="{= ${viewModel>Status} === 'X' ? 'Success' : 'Error'}" text="{= ${viewModel>Status} === 'X' ? 'Ok' : 'Erro' }"/>
+								</cells>
+								<cells>
+									<ObjectIdentifier title="{viewModel>Matnr}"/>
 								</cells>								
 							</ColumnListItem>
 						</items>

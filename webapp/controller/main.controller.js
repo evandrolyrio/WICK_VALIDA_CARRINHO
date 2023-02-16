@@ -102,10 +102,10 @@ sap.ui.define([
 		},
 		lerCod: function() {
 			var that = this;
-			that.getModel("viewModel").setProperty("/busy", true);
 			this.scanHU().then(function (scanned) {
 				var barcode = scanned;
 				var oModel = that.getModel();
+				that.getModel("viewModel").setProperty("/busy", true);
 				oModel.invalidate();
 				oModel.callFunction("/LerBarcode", {
 					method: "GET",
