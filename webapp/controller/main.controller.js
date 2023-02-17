@@ -114,13 +114,18 @@ sap.ui.define([
 						Id_carrinho: that.getModel("viewModel").getProperty("/Id_carrinho")
 					},
 					success: function(oData) {	
-						that.getModel("viewModel").setProperty("/ValidaSet", oData.results);
-						that.getModel("viewModel").setProperty("/busy", false);
-						that.getView().byId("tbValida").getBinding("items").refresh();
+						if (that.getModel("viewModel").getProperty("/ValidaSet").length == oData.results.length) {
+							MessageBox.information("Etiqueta já lida");
+							that.getModel("viewModel").setProperty("/busy", false);
+						} else {						
+							that.getModel("viewModel").setProperty("/ValidaSet", oData.results);
+							that.getModel("viewModel").setProperty("/busy", false);
+							that.getView().byId("tbValida").getBinding("items").refresh();
+						}
 					},
 					error: function(error) {
 						that.getModel("viewModel").setProperty("/busy", false);
-						MessageBox.information("Erro");
+						MessageBox.information("Etiqueta não encontrada");
 					}
 				});	
 			});					
